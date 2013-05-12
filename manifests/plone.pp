@@ -25,6 +25,7 @@ class plone {
     path    => '/usr/local/bin/:/usr/bin/:/bin/',
     require => Exec['Install Python 2.7.3'],
     timeout => 60 * 10,                        # Allow 10 mins to install
+    unless  => 'which easy_install-2.7',
   }
 
   # Install Distribute for Python 3.3
@@ -34,6 +35,7 @@ class plone {
     path    => '/usr/local/bin/:/usr/bin/:/bin/',
     require => Exec['Install Python 3.3.0'],
     timeout => 60 * 10,                        # Allow 10 mins to install
+    unless  => 'which easy_install-3.3',
   }
 
 }
