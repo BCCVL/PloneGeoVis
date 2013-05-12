@@ -5,7 +5,7 @@ class yum_update {
     command => 'yum update -y',
     path    => '/usr/local/bin/:/usr/bin/:/bin/',
     unless  => 'test -d Plone',
-    timeout => 0                                  # Disable the command timeout
+    timeout => 0,                                # Disable the command timeout
   }
 
 }

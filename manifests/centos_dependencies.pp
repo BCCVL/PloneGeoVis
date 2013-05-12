@@ -41,6 +41,23 @@ class centos_dependencies{
     ensure => present,
   }
 
+  package { "python-devel.x86_64":
+    ensure => present,
+  }
+
+  package { "libjpeg-turbo-devel.x86_64":
+    ensure => present,
+  }
+
+  package { "libxml2-devel.x86_64":
+    ensure => present,
+  }
+
+  package { "libxslt-devel.x86_64":
+    ensure => present,
+  }
+
+
 }
 
 include centos_dependencies
