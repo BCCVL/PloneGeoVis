@@ -2,7 +2,7 @@ class plone {
 
   # Install Python 2.7.3
   exec { 'Install Python 2.7.3':
-    command => 'rm -rf Python-2.7.3 && wget http://python.org/ftp/python/2.7.3/Python-2.7.3.tar.bz2 && tar xf Python-2.7.3.tar.bz2 && cd Python-2.7.3 && ./configure --prefix=/use/local && make && make altinstall',
+    command => 'rm -rf Python-2.7.3 && wget http://python.org/ftp/python/2.7.3/Python-2.7.3.tar.bz2 && tar xf Python-2.7.3.tar.bz2 && cd Python-2.7.3 && ./configure --prefix=/usr/local && make && make altinstall',
     cwd     => '/tmp',
     path    => '/usr/local/bin/:/usr/bin/:/bin/',
     unless  => 'which python2.7',
