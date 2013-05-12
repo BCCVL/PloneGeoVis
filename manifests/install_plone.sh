@@ -10,6 +10,7 @@ SHARED_DIR="/vagrant"
 SHARED_FILES="src buildout.cfg base.cfg develop.cfg"
 VHOME="/home/vagrant"
 UI_GLOB="Plone-*-UnifiedInstaller"
+PYTHON_2_7_PATH="/usr/local/bin/python2.7"
 
 if [ ! -f ${UI_GLOB}*.tgz ]; then
     echo Downloading Plone Unified Installer from $UI_URL
@@ -37,7 +38,7 @@ fi
 if [ ! -d Plone ]; then
     cd ${UI_GLOB}
     echo Running Plone Unified Installer
-    $AS_VAGRANT ./install.sh ${UI_OPTIONS} --target=${VHOME}/Plone
+    $AS_VAGRANT ./install.sh ${UI_OPTIONS} --target=${VHOME}/Plone --with-python=${PYTHON_2_7_PATH}
     if [ $? -gt 0 ]; then
         # remove partial install
         rm -r Plone

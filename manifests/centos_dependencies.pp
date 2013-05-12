@@ -53,10 +53,17 @@ class centos_dependencies{
     ensure => present,
   }
 
+  package { "libxml2-python.x86_64":
+    ensure => present,
+  }
+
   package { "libxslt-devel.x86_64":
     ensure => present,
   }
 
+  package { "libxslt-python.x86_64":
+    ensure => present,
+  }
 
 }
 
