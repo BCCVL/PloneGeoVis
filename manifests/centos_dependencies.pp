@@ -49,12 +49,31 @@ class centos_dependencies{
     ensure => present,
   }
 
+#####
+# Presently, these packages are too old. They are approximately 1 year too old.
+#
+#  package { "libxml2-devel.x86_64":
+#    ensure => present,
+#  }
+#
+#  package { "libxml2-python.x86_64":
+#    ensure => present,
+#  }
+
+  # Install libxml2-devel.x86_64
   package { "libxml2-devel.x86_64":
-    ensure => present,
+    provider  => rpm,
+    ensure    => present,
+    source    => "ftp://xmlsoft.org/libxml2/libxml2-devel-2.9.0-1.x86_64.rpm",
+    require   => Exec['yum groupinstall "Development Tools"'],
   }
 
+  # Install libxml2-python.x86_64
   package { "libxml2-python.x86_64":
-    ensure => present,
+    provider  => rpm,
+    ensure    => present,
+    source    => "ftp://xmlsoft.org/libxml2/libxml2-python-2.9.0-1.x86_64.rpm",
+    require   => Package['libxml2-devel.x86_64'],
   }
 
   package { "libxslt-devel.x86_64":
