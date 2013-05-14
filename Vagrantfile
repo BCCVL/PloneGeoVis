@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 UI_URL = "https://launchpad.net/plone/4.3/4.3/+download/Plone-4.3-UnifiedInstaller.tgz"
-UI_OPTIONS = "standalone --password=admin"
+UI_OPTIONS = "standalone --password=admin --static-lxml=yes"
 
 Vagrant::Config.run do |config|
     config.vm.box     = "centos-64-x64-vbox4210"
