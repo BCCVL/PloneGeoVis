@@ -38,7 +38,7 @@ fi
 if [ ! -d Plone ]; then
     cd ${UI_GLOB}
     echo Running Plone Unified Installer
-    $AS_VAGRANT ./install.sh ${UI_OPTIONS} --target=${VHOME}/Plone --with-python=${PYTHON_2_7_PATH}
+    $AS_VAGRANT ./install.sh ${UI_OPTIONS} --target=${VHOME}/Plone --with-python=${PYTHON_2_7_PATH} --static-lxml=yes
     if [ $? -gt 0 ]; then
         # remove partial install
         rm -r Plone
