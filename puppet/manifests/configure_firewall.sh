@@ -27,11 +27,12 @@
 # Allow SSH connections on tcp port 22
 # This is essential when working on remote servers via SSH to prevent locking yourself out of the system
 #
- iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+ iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
 #
 # Allow Plone dev connections on tcp port 8080
 #
- iptables -A INPUT -p tcp --dport 8080 -j ACCEPT
+ iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 8080 -j ACCEPT
+
 #
 # Reject all other input/forward packets
 #

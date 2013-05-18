@@ -14,36 +14,48 @@ Vagrant::Config.run do |config|
   # package install errors
   config.vm.provision :puppet do |puppet|
     puppet.manifest_file  = "yum_update.pp"
-    puppet.manifests_path = "manifests"
+    puppet.manifests_path = "puppet/manifests"
   end
 
   # Configure the firewall
   config.vm.provision :shell do |shell|
-    shell.path = "manifests/configure_firewall.sh"
+    shell.path = "puppet/manifests/configure_firewall.sh"
   end
 
   # Install CentOS dependencies
   # package install errors
   config.vm.provision :puppet do |puppet|
     puppet.manifest_file  = "centos_dependencies.pp"
-    puppet.manifests_path = "manifests"
+    puppet.manifests_path = "puppet/manifests"
   end
 
   # ensure we have the packages we need
   config.vm.provision :puppet do |puppet|
     puppet.manifest_file  = "plone.pp"
-    puppet.manifests_path = "manifests"
+    puppet.manifests_path = "puppet/manifests"
+  end
+
+  # Run Plone's buildout
+  config.vm.provision :puppet do |puppet|
+    puppet.manifest_file  = "plone_buildout.pp"
+    puppet.manifests_path = "puppet/manifests"
+  end
+
+  # Start Plone
+  config.vm.provision :puppet do |puppet|
+    puppet.manifest_file  = "start_plone.pp"
+    puppet.manifests_path = "puppet/manifests"
   end
 
   # Create a Putty-style keyfile for Windows users
   config.vm.provision :shell do |shell|
-    shell.path = "manifests/host_setup.sh"
+    shell.path = "puppet/manifests/host_setup.sh"
     shell.args = RUBY_PLATFORM
   end
 
   # install Plone
   config.vm.provision :shell do |shell|
-    shell.path = "manifests/install_plone.sh"
+    shell.path = "puppet/manifests/install_plone.sh"
     shell.args = UI_URL + " '" + UI_OPTIONS + "'"
   end
 end
