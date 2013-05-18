@@ -14,29 +14,24 @@ Vagrant::Config.run do |config|
   # package install errors
   config.vm.provision :puppet do |puppet|
     puppet.manifest_file  = "yum_update.pp"
-    puppet.module_path    = "my_modules"
     puppet.manifests_path = "manifests"
   end
 
   # Configure the firewall
-  config.vm.provision :puppet do |puppet|
-    puppet.manifest_file  = "my_firewall.pp"
-    puppet.module_path    = "my_modules"
-    puppet.manifests_path = "manifests"
+  config.vm.provision :shell do |shell|
+    shell.path = "manifests/configure_firewall.sh"
   end
 
   # Install CentOS dependencies
   # package install errors
   config.vm.provision :puppet do |puppet|
     puppet.manifest_file  = "centos_dependencies.pp"
-    puppet.module_path    = "my_modules"
     puppet.manifests_path = "manifests"
   end
 
   # ensure we have the packages we need
   config.vm.provision :puppet do |puppet|
     puppet.manifest_file  = "plone.pp"
-    puppet.module_path    = "my_modules"
     puppet.manifests_path = "manifests"
   end
 
