@@ -1,4 +1,1 @@
-PloneGeoVis
-===========
-
-A repo to test visualising geospatial data using Plone and the collective.geo library
+This repo is no longer in use. Once I (Robert) can confirm that the code no longer serves any purpose, I shall DESTROY it.
